@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import myrp.library.ReadXlsData;
 import myrp.library.TestInitReference;
-import myrp.test.RegressionUtil.MYRPRegressionUtil;
 import myrp.test.RegressionUtil.MYRPRegressionUtil_RT07926;
 
 import org.testng.Assert;
@@ -24,7 +23,7 @@ import atu.testng.reports.utils.Utils;
 MethodListener.class })
 public class RT_07812_merchant extends TestInitReference {
 	{
-		System.setProperty("atu.reporter.config", "../myrp-automation/conf/atu.properties");
+		System.setProperty("atu.reporter.config", "../atu.properties");
 	}
 	
 	String testCase = "RT_07812_merchant";

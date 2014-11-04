@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import myrp.library.ReadXlsData;
 import myrp.library.TestInitReference;
-import myrp.test.RegressionUtil.MYRPRegressionUtil;
 import myrp.test.RegressionUtil.MYRPRegressionUtil_RT07926;
 
 import org.testng.Assert;
@@ -24,7 +23,7 @@ import atu.testng.reports.utils.Utils;
 MethodListener.class })
 public class RT_07834 extends TestInitReference {
 	{
-		System.setProperty("atu.reporter.config", "../myrp-automation/conf/atu.properties");
+		System.setProperty("atu.reporter.config", "../myrp-automation/conf/atu.properties");		
 	}
 	
 	String testCase = "RT_07834";
@@ -37,9 +36,9 @@ public class RT_07834 extends TestInitReference {
 			MYRPRegressionUtil_RT07926 myrp = new MYRPRegressionUtil_RT07926(input);
 			
 			if(myrp.Offer()){
-				ATUReports.add(input[1],"25 OFFER",input[2], input[3], true);//pass
+				ATUReports.add(input[1],"25 OFFER Report",input[2], input[3], true);//pass
 			}else{
-				ATUReports.add(input[1],"25 OFFER",input[2], input[4], true);//fail
+				ATUReports.add(input[1],"25 OFFER Report",input[2], input[4], true);//fail
 			}
 			
 		}catch (Exception e) {

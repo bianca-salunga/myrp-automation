@@ -6,7 +6,6 @@ import static org.openqa.selenium.By.xpath;
 import java.io.IOException;
 import java.util.List;
 
-import myrp.library.MYRPObjectReference;
 import myrp.library.FunctionReference;
 import myrp.library.MYRPObjectReference_RTC;
 import myrp.library.ObjectReference;
@@ -94,14 +93,14 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 				
 			}
 			 catch (AssertionError e) {
-					fail("Unable to get Free Suburb Report");
+					fail("Unable to get Free Suburb Profile Report");
 			 }
 			return success;		
 		}/// END RT_07926
 		
 		public boolean PropertyReports() throws Exception{
 			boolean success = false;
-			System.out.println("========Preparing to purchase multiple reports as Guest");
+			System.out.println("========Preparing to purchase multiple reports as Guest user");
 			try {
 				if(purchasedEstimatedReport() && purchasedDetailedReport() && purchasedSalesHistoryReport() && purchasedStreetHistoryReport() && purchasedSuburbSalesHistoryReport() && purchasedInvestorPostcodeReport() && gotoMyCartMerchant()){
 					success = true;
@@ -480,7 +479,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		
 			
 		}
-		
+		////MERCHANT GUEST//
 	private boolean gotoMyCartMerchant()  throws Exception{
 		// TODO Auto-generated method stub
 		boolean success = false;
@@ -566,6 +565,99 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		return success;
 		
 	}
+	///END OF MERCHANT GUEST//
+	//CPS//
+	private boolean gotoMyCartCPSGUEST()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		int month = 10;
+		int year = 4;
+		
+		System.out.println("========Preparing to go to My Cart - DPS PAYMENT PAGE Page");
+		try {
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+			click(xpath(MYRPObjectReference_RTC.MyCart));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.GuestEmail));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.GuestEmail)));
+			type(xpath(MYRPObjectReference_RTC.GuestEmail),input[16]);
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.OrderNowbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.OrderNowbtn)));
+			click(xpath(MYRPObjectReference_RTC.OrderNowbtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.PayNowbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PayNowbtn)));
+			click(xpath(MYRPObjectReference_RTC.PayNowbtn));
+			
+			//element oon DPS page
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CPSheader));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CPSheader)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CPSfooter));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CPSfooter)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNumberLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNumberLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNumberField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNumberField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNameLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNameLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNameField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNameField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.ExpireLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.ExpireLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Expiremonth));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Expiremonth)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Expireyear));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Expireyear)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Submitbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Submitbtn)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Cancelbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Cancelbtn)));
+			System.out.println("All elements on My cart page is present");
+			
+			
+			type(xpath(MYRPObjectReference_RTC.CardNameField),input[11]);
+			type(xpath(MYRPObjectReference_RTC.CardNumberField),input[12]);
+			type(xpath(MYRPObjectReference_RTC.Expiremonth),input[13]);
+			type(xpath(MYRPObjectReference_RTC.Expireyear),input[14]);
+			type(xpath(MYRPObjectReference_RTC.SecuritycodeField),input[15]);
+			
+			click(xpath(MYRPObjectReference_RTC.Submitbtn));
+			System.out.println("Clicking the pay now button");
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.PaymentMsg));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PaymentMsg)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.PurchaseCompletedLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PurchaseCompletedLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.YoumightAlsoLikeFiels));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.YoumightAlsoLikeFiels)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.SuccessSignUpField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SuccessSignUpField)));
+			
+			String text = getText(xpath(MYRPObjectReference_RTC.PaymentMsg));
+	
+			
+			if(text.equalsIgnoreCase("Purchase successful")){
+				success = true;
+				log("Succesfully purchase reports");
+				Thread.sleep(2000);
+			}
+			else{
+				fail("Unable to purchase reports");
+			}
+			} 
+		catch (AssertionError e) {
+			fail("Unable to purchase reports");
+		}
+		return success;
+		
+	}
+	//CPS GUEST//
 	private boolean gotoAddedtoCart() throws Exception{
 		// TODO Auto-generated method stub
 		boolean success = false;
@@ -597,7 +689,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		//System.out.println("========Preparing to purchase subscription report as registered user");
 		try {
-			if(purchaseEstimatedValueSubcription() && purchasedSuburbSalesMapSubscription() && purchasedSuburbValueMapSubscription() && gotoSiginCart() && gotoMyCartMerchantRegisterUser()){
+			if(purchaseEstimatedValueSubcription() && purchasedSuburbSalesMapSubscription() && purchasedSuburbValueMapSubscription() && gotoSiginCart() && gotoMyCartCPSRegisterUser()){
 				success = true;
 				log("Successfully purchased Subscription report as registered user");
 				Thread.sleep(2000);
@@ -836,41 +928,36 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.loginbtnCart)));
 			
 			type(xpath(MYRPObjectReference_RTC.usernameCart),input[13]);
-			//type(xpath(MYRPObjectReference_RTC.passwordCart),input[14]);
+			
 			Thread.sleep(10000);
 			//System.out.println("entering password");
 			click(xpath(MYRPObjectReference_RTC.loginbtnCart));
 			System.out.println("click");
-			
-			//click the property reports landing page
-			
-			
+	
 			try {
-					//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-					//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-					//String text = getText(xpath(MYRPObjectReference_RTC.clickAddedTocart));
 					String text = "done";
 					if(text.equalsIgnoreCase("done"))
 						{
 							success = true;
-							log("Succesfully added to cart - Suburb value map subscription");
+							log("Succesfully sign in as member");
 							Thread.sleep(2000);
 						}
 					else
 						{
-							fail("Unable to add to cart -  Suburb value map subscription");
+							fail("Unable to sign in as member");
 						}
 				}
 				catch (AssertionError e) {
-					fail("Unable to add to cart -   Suburb value map subscription");
+					fail("Unable to sign in as member");
 				
 				}
 			} 
 		catch (AssertionError e) {
-			fail("Unable to add to cart -Suburn value map subscription");
+			fail("Unable to sign in as member");
 		}
 		return success;
 	}
+	////MERCHANT//////
 	private boolean gotoMyCartMerchantRegisterUser()  throws Exception{
 		// TODO Auto-generated method stub
 		boolean success = false;
@@ -955,16 +1042,103 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		}
 		return success;
 	}
-	
+	////// END OF MERCHANT///
+	///// CPS
+	private boolean gotoMyCartCPSRegisterUser()  throws Exception{
+		// TODO Auto-generated method stub
+				boolean success = false;
+				
+				
+				System.out.println("========Preparing to go to My Cart- DPS Payment Page");
+				try {
+					//waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+					//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+					//click(xpath(MYRPObjectReference_RTC.MyCart));
+					
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CardDropdown));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardDropdown)));
+					selectDropdownOptionbyIndex(xpath(MYRPObjectReference_RTC.CardDropdown), 0);
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CardCheckbox));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardCheckbox)));
+					
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.PayNowbtn));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PayNowbtn)));
+					click(xpath(MYRPObjectReference_RTC.PayNowbtn));
+					
+					//element oon DPS page
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CPSheader));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CPSheader)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CPSfooter));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CPSfooter)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNumberLbl));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNumberLbl)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNumberField));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNumberField)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNameLbl));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNameLbl)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNameField));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNameField)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.ExpireLabel));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.ExpireLabel)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.Expiremonth));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Expiremonth)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.Expireyear));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Expireyear)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeLbl));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeLbl)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeField));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeField)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.Submitbtn));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Submitbtn)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.Cancelbtn));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Cancelbtn)));
+					System.out.println("All elements on My cart page is present");
+					
+					
+					type(xpath(MYRPObjectReference_RTC.CardNameField),input[8]);
+					type(xpath(MYRPObjectReference_RTC.CardNumberField),input[9]);
+					type(xpath(MYRPObjectReference_RTC.Expiremonth),input[10]);
+					type(xpath(MYRPObjectReference_RTC.Expireyear),input[11]);
+					type(xpath(MYRPObjectReference_RTC.SecuritycodeField),input[12]);
+					
+					click(xpath(MYRPObjectReference_RTC.Submitbtn));
+					System.out.println("Clicking the pay now button");
+					
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.PaymentMsg));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PaymentMsg)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.PurchaseCompletedLabel));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PurchaseCompletedLabel)));
+					waitForElementPresent(xpath(MYRPObjectReference_RTC.YoumightAlsoLikeFiels));
+					Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.YoumightAlsoLikeFiels)));
+					//waitForElementPresent(xpath(MYRPObjectReference_RTC.SuccessSignUpField));
+					//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SuccessSignUpField)));
+					
+					String text = getText(xpath(MYRPObjectReference_RTC.PaymentMsg));
+					
+					if(text.equalsIgnoreCase("Purchase successful")){
+						success = true;
+						log("Succesfully purchase subscription report as registered user");
+						Thread.sleep(2000);
+					}
+					else{
+						fail("Unable purchase subscription report as registered user");
+					}
+					} 
+				catch (AssertionError e) {
+					fail("Unable purchase subscription report as registered user");
+				}
+				return success;
+	}
+	///END OF CPS
 	public boolean Offer()  throws Exception{
 		// TODO Auto-generated method stub
 		
 		boolean success = false;
 		//System.out.println("========Preparing to purchase subscription report as registered user");
 		try {
-			if(purchase25offerreport() && gotoMyCartMerchant()){
+			if(purchase25offerreport() && gotoMyCartCPSGUEST()){
 				success = true;
-				log("Successfully purchased 25offer report");
+				log("Successfully purchased discounted report on 25offer page");
 				Thread.sleep(2000);
 			}else{
 				fail("Some report cant be purchase");
@@ -981,7 +1155,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase 25 offer report");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/25offer");
+			driver.navigate().to("http://dev.myrp.com.au/25offer");
 			System.out.println("navigated");
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.offerfield));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.offerfield)));
@@ -1030,11 +1204,12 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on nab partner");
 		try {
-			if(NabPagePurchasereport() && gotoMyCartMerchantPartner()){
+			if(NabPagePurchasereport() && gotoMyCartCPSPartner()){
 				success = true;
 				log("Successfully purchased property report on nab partner");
 				Thread.sleep(2000);
-			}else{
+			}
+			else{
 				fail("Some report cant be purchase");
 			}
 			
@@ -1048,7 +1223,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on choice partner");
 		try {
-			if(ChoicePagePurchasereport() && gotoMyCartMerchantPartner()){
+			if(ChoicePagePurchasereport() && gotoMyCartCPSPartner()){
 				success = true;
 				log("Successfully purchased property report on choice partner");
 				Thread.sleep(2000);
@@ -1066,7 +1241,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on fast partner");
 		try {
-			if(FastPagePurchasereport() && gotoMyCartMerchantPartner()){
+			if(FastPagePurchasereport() && gotoMyCartCPSPartner()){
 				success = true;
 				log("Successfully purchased property report on fast partner");
 				Thread.sleep(2000);
@@ -1084,7 +1259,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on plan partner");
 		try {
-			if(PlanPagePurchasereport() && gotoMyCartMerchantPartner()){
+			if(PlanPagePurchasereport() && gotoMyCartCPSPartner()){
 				success = true;
 				log("Successfully purchased property report on plan partner");
 				Thread.sleep(2000);
@@ -1102,7 +1277,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on advantedge partner");
 		try {
-			if(AdvantedgePagePurchasereport() && gotoMyCartMerchantPartner()){
+			if(AdvantedgePagePurchasereport() && gotoMyCartCPSPartner()){
 				success = true;
 				log("Successfully purchased property report on advantedge partner");
 				Thread.sleep(2000);
@@ -1120,7 +1295,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on peoples choice partner");
 		try {
-			if(PeopleschoicePagePurchasereport() && gotoMyCartMerchantPartner()){
+			if(PeopleschoicePagePurchasereport() && gotoMyCartCPSPartner()){
 				success = true;
 				log("Successfully purchased property report on peoples choice partner");
 				Thread.sleep(2000);
@@ -1133,12 +1308,477 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		}
 		return success;
 	}
+	public boolean bomPartner() throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get property report on Bank of Melbourne");
+		try {
+			if(bomFreereport() && popupWindow()){
+				success = true;
+				log("Successfully get property report on Bank of Melbourne");
+				Thread.sleep(2000);
+			}else{
+				fail("Can't get some report");
+			}
+			
+		} catch (AssertionError e) {
+			fail("Can't get some report");
+		}
+		return success;
+	}
+	public boolean bsaPartner() throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get property report on BankSA");
+		try {
+			if(bsaFreereport() && popupWindow()){
+				success = true;
+				log("Successfully get property report on BankSA");
+				Thread.sleep(2000);
+			}else{
+				fail("Can't get some report");
+			}
+			
+		} catch (AssertionError e) {
+			fail("Can't get some report");
+		}
+		return success;
+	}
+	public boolean stgeorgePartner() throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get property report on St. George");
+		try {
+			if(stgeorgeFreereport() && popupWindow()){
+				success = true;
+				log("Successfully get property report on St. George");
+				Thread.sleep(2000);
+			}else{
+				fail("Can't get some report");
+			}
+			
+		} catch (AssertionError e) {
+			fail("Can't get some report");
+		}
+		return success;
+	}
+	public boolean westpacPartner() throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get property report on WestPac");
+		try {
+			if(westpacFreereport() && westpacpopupWindow()){
+				success = true;
+				log("Successfully get property report on WestPac");
+				Thread.sleep(2000);
+			}else{
+				fail("Can't get some report");
+			}
+			
+		} catch (AssertionError e) {
+			fail("Can't get some report");
+		}
+		return success;
+	}
+	public boolean bomFreereport()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get free report from Bank of Melbourne");
+		try {
+			driver.navigate().to("http://dev.myrp.com.au/bom");
+			System.out.println("navigated");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.bomlogo));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.bomlogo)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoBtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoBtn)));
+			
+			type(xpath(MYRPObjectReference_RTC.promoField),input[6]);
+			click(xpath(MYRPObjectReference_RTC.promoBtn));
+			System.out.println("Validate promocode");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField)));
+			type(xpath(MYRPObjectReference_RTC.partnerSearchAddressField),input[5]);
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults)));
+			click(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			System.out.println("Searching for the address");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn)));
+			click(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popWindow));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popWindow)));
+			String text = "signin";
+			try {
+				if(text.equalsIgnoreCase("signin"))
+					{
+						success = true;
+						log("Succesfully added to cart - Bank of Melbourne");
+						Thread.sleep(2000);
+					}
+				else
+					{
+						fail("Unable to add to cart1 - Bank of Melbourne");
+					}
+			}
+			catch (AssertionError e) {
+				fail("Unable to add to cart - Bank of Melbourne");
+			
+			}
+			}
+			catch (AssertionError e)
+			{
+				fail("Unable to add to cart - Bank of Melbourne");
+			
+			}
+		return success;
+	}
+	public boolean bsaFreereport()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get free report from BankSA");
+		try {
+			driver.navigate().to("http://dev.myrp.com.au/bsa");
+			System.out.println("navigated");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.bsalogo));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.bsalogo)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.bottom));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.bottom)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoBtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoBtn)));
+			
+			type(xpath(MYRPObjectReference_RTC.promoField),input[6]);
+			click(xpath(MYRPObjectReference_RTC.promoBtn));
+			System.out.println("Validate promocode");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField)));
+			type(xpath(MYRPObjectReference_RTC.partnerSearchAddressField),input[5]);
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults)));
+			click(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			System.out.println("Searching for the address");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn)));
+			click(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popWindow));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popWindow)));
+			String text = "signin";
+			try {
+				if(text.equalsIgnoreCase("signin"))
+					{
+						success = true;
+						log("Succesfully added to cart - BankSA");
+						Thread.sleep(2000);
+					}
+				else
+					{
+						fail("Unable to add to cart1 - BankSA");
+					}
+			}
+			catch (AssertionError e) {
+				fail("Unable to add to cart - BankSA");
+			
+			}
+			}
+			catch (AssertionError e)
+			{
+				fail("Unable to add to cart - BankSA");
+			
+			}
+		return success;
+	}
+	public boolean stgeorgeFreereport()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get free report from St. George");
+		try {
+			driver.navigate().to("http://dev.myrp.com.au/stgeorge");
+			System.out.println("navigated");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.stgeorgelogo));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.stgeorgelogo)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.bottom));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.bottom)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoBtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoBtn)));
+			
+			type(xpath(MYRPObjectReference_RTC.promoField),input[6]);
+			click(xpath(MYRPObjectReference_RTC.promoBtn));
+			System.out.println("Validate promocode");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField)));
+			type(xpath(MYRPObjectReference_RTC.partnerSearchAddressField),input[5]);
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults)));
+			click(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			System.out.println("Searching for the address");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn)));
+			click(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popWindow));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popWindow)));
+			String text = "signin";
+			try {
+				if(text.equalsIgnoreCase("signin"))
+					{
+						success = true;
+						log("Succesfully added to cart - St. George");
+						Thread.sleep(2000);
+					}
+				else
+					{
+						fail("Unable to add to cart1 - St. George");
+					}
+			}
+			catch (AssertionError e) {
+				fail("Unable to add to cart - St. George");
+			
+			}
+			}
+			catch (AssertionError e)
+			{
+				fail("Unable to add to cart - St. George");
+			
+			}
+		return success;
+	}
+	public boolean westpacFreereport()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to get free report from WestPac");
+		try {
+			driver.navigate().to("http://dev.myrp.com.au/westpac");
+			System.out.println("navigated");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpaclogo));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpaclogo)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacHouseImg));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacHouseImg)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacEnjoyfree));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacEnjoyfree)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacFindHome));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacFindHome)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacImgFooter));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacImgFooter)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.bottom));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.bottom)));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.promoBtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.promoBtn)));
+			
+			type(xpath(MYRPObjectReference_RTC.promoField),input[6]);
+			click(xpath(MYRPObjectReference_RTC.promoBtn));
+			System.out.println("Validate promocode");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressField)));
+			type(xpath(MYRPObjectReference_RTC.partnerSearchAddressField),input[5]);
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults)));
+			click(xpath(MYRPObjectReference_RTC.partnerSearchAddressResults));
+			System.out.println("Searching for the address");
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.getThisfreebtn)));
+			click(xpath(MYRPObjectReference_RTC.getThisfreebtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popWindow));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popWindow)));
+			String text = "signin";
+			try {
+				if(text.equalsIgnoreCase("signin"))
+					{
+						success = true;
+						log("Succesfully added to cart - Westpac");
+						Thread.sleep(2000);
+					}
+				else
+					{
+						fail("Unable to add to cart1 - Westpac");
+					}
+			}
+			catch (AssertionError e) {
+				fail("Unable to add to cart - Westpac");
+			
+			}
+			}
+			catch (AssertionError e)
+			{
+				fail("Unable to add to cart - Westpac");
+			
+			}
+		return success;
+	}
+	public boolean popupWindow()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to fill up necessary details");
+		try {
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popUpTitle));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popUpTitle)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CustomerNumberLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CustomerNumberLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CustomerNumberField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CustomerNumberField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.FirstNameLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.FirstNameLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.FirstNameField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.FirstNameField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.EmailAddLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.EmailAddLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.EmailAddField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.EmailAddField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.LastNameLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.LastNameLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.LastNameField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.LastNameField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.SubmitBtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SubmitBtn)));
+			
+			type(xpath(MYRPObjectReference_RTC.CustomerNumberField),input[7]);
+			type(xpath(MYRPObjectReference_RTC.FirstNameField),input[9]);
+			type(xpath(MYRPObjectReference_RTC.EmailAddField),input[8]);
+			type(xpath(MYRPObjectReference_RTC.LastNameField),input[10]);
+			click(xpath(MYRPObjectReference_RTC.SubmitBtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popSuccess));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popSuccess)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popupSyccessTitle));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popupSyccessTitle)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popupClose));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popupClose)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popMsgSuccess));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popMsgSuccess)));
+			
+			try {
+				String text = getText(xpath(MYRPObjectReference_RTC.popupSyccessTitle));
+				if(text.equalsIgnoreCase("Success!"))
+					{
+						success = true;
+						log("Succesfully get free report");
+						click(xpath(MYRPObjectReference_RTC.popupClose));
+						Thread.sleep(2000);
+					}
+				else
+					{
+						fail("Unable to get free report");
+					}
+			}
+			catch (AssertionError e) {
+				fail("Unable to get free report");
+			
+			}
+			}
+		catch (AssertionError e) {
+			fail("Unable to get free report");
+		}
+		return success;
+	}
+	public boolean westpacpopupWindow()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		System.out.println("========Preparing to fill up necessary details");
+		try {
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popUpTitle));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popUpTitle)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacFNameLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacFNameLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacFNameField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacFNameField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacLNameLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacLNameLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacLNameField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacLNameField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacPNumberLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacPNumberLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacPNumberField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacPNumberField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacEmailLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacEmailLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacEmailField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacEmailField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacCIDNumberLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacCIDNumberLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacCIDNumberField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacCIDNumberField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacPostcodeLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacPostcodeLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacPostcodeField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacPostcodeField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.westpacAgreeField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.westpacAgreeField)));
+			
+			type(xpath(MYRPObjectReference_RTC.westpacFNameField),input[7]);
+			type(xpath(MYRPObjectReference_RTC.westpacLNameField),input[8]);
+			type(xpath(MYRPObjectReference_RTC.westpacPNumberField),input[9]);
+			type(xpath(MYRPObjectReference_RTC.westpacEmailField),input[10]);
+			type(xpath(MYRPObjectReference_RTC.westpacCIDNumberField),input[11]);
+			type(xpath(MYRPObjectReference_RTC.westpacPostcodeField),input[12]);
+			radioChecked(xpath(MYRPObjectReference_RTC.westpacAgreeField));
+			click(xpath(MYRPObjectReference_RTC.SubmitBtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popSuccess));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popSuccess)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popupSyccessTitle));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popupSyccessTitle)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popupClose));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popupClose)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.popMsgSuccess));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.popMsgSuccess)));
+			
+			try {
+				String text = getText(xpath(MYRPObjectReference_RTC.popupSyccessTitle));
+				if(text.equalsIgnoreCase("Success!"))
+					{
+						success = true;
+						log("Succesfully get free report");
+						click(xpath(MYRPObjectReference_RTC.popupClose));
+						Thread.sleep(2000);
+					}
+				else
+					{
+						fail("Unable to get free report");
+					}
+			}
+			catch (AssertionError e) {
+				fail("Unable to get free report");
+			
+			}
+			}
+		catch (AssertionError e) {
+			fail("Unable to get free report");
+		}
+		return success;
+	}
 	public boolean NabPagePurchasereport()  throws Exception{
 		// TODO Auto-generated method stub
 		boolean success = false;
 		System.out.println("========Preparing to purchase report from nab partner");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/nab");
+			driver.navigate().to("http://dev.myrp.com.au/nab");
 			System.out.println("navigated");
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.nablogo));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.nablogo)));
@@ -1184,18 +1824,13 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.termConditionCheckbox)));
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.ConfirmDetails));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.ConfirmDetails)));
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.nabPromotionCodeBtn));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.nabPromotionCodeBtn)));
+			
 			System.out.println("all elements shown");
 			
-			//click(xpath(MYRPObjectReference_RTC.offer25Btn));
-			//System.out.println("click");
 			
 			try {
-				//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-				String text = "sign in";
-				if(text.equalsIgnoreCase("sign in"))
+				String text = "success";
+				if(text.equalsIgnoreCase("success"))
 					{
 						success = true;
 						log("Succesfully added to cart - nab partner report");
@@ -1221,7 +1856,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase report from choice partner");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/choice");
+			driver.navigate().to("http://dev.myrp.com.au/choice");
 			System.out.println("navigated");
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.choicelogo));
@@ -1264,28 +1899,34 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			System.out.println("click add to cart");
 			
 			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+			click(xpath(MYRPObjectReference_RTC.MyCart));
+			System.out.println("My Cart Page");
+			
+			
 			try {
-				waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-				String text = getText(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				if(text.equalsIgnoreCase("Added to cart"))
+				//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
+				//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
+				String text = "go";
+				if(text.equalsIgnoreCase("go"))
 					{
 						success = true;
-						log("Succesfully added to cart - fast partner report");
+						log("Succesfully added to cart - choice partner report");
 						Thread.sleep(2000);
 					}
 				else
 					{
-						fail("Unable to add to cart - fast partner report");
+						fail("Unable to add to cart - choice partner report");
 					}
 			}
 			catch (AssertionError e) {
-				fail("Unable to add to cart - fast partner report");
+				fail("Unable to add to cart - choice partner report");
 			
 			}
 			}
 		catch (AssertionError e) {
-			fail("Unable to add to cart -fast partner report");
+			fail("Unable to add to cart -choice partner report");
 		}
 		return success;
 	}
@@ -1294,7 +1935,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase report from fast partner");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/fast");
+			driver.navigate().to("http://dev.myrp.com.au/fast");
 			System.out.println("navigated");
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.fastlogo));
@@ -1328,20 +1969,25 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerCustomerField));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerCustomerField)));
 			System.out.println("all elements shows");
-			type(xpath(MYRPObjectReference_RTC.partnerNameField),input[6]);
-			type(xpath(MYRPObjectReference_RTC.partnerCustomerField),input[7]);
+			type(xpath(MYRPObjectReference_RTC.partnerNameField),input[12]);
+			type(xpath(MYRPObjectReference_RTC.partnerCustomerField),input[13]);
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnersPurchasebtn));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnersPurchasebtn)));
 			click(xpath(MYRPObjectReference_RTC.partnersPurchasebtn));
 			System.out.println("click add to cart");
 			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+			click(xpath(MYRPObjectReference_RTC.MyCart));
+			System.out.println("My Cart Page");
+			
 			
 			try {
-				waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-				String text = getText(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				if(text.equalsIgnoreCase("Added to cart"))
+				//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
+				//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
+				String text = "go";
+				if(text.equalsIgnoreCase("go"))
 					{
 						success = true;
 						log("Succesfully added to cart - fast partner report");
@@ -1367,7 +2013,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase report from plan partner");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/plan");
+			driver.navigate().to("http://dev.myrp.com.au/plan");
 			System.out.println("navigated");
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.planlogo));
@@ -1410,23 +2056,29 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			System.out.println("click add to cart");
 			
 			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+			click(xpath(MYRPObjectReference_RTC.MyCart));
+			System.out.println("My Cart Page");
+			
+			
 			try {
-				waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-				String text = getText(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				if(text.equalsIgnoreCase("Added to cart"))
+				//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
+				//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
+				String text = "go";
+				if(text.equalsIgnoreCase("go"))
 					{
 						success = true;
-						log("Succesfully added to cart - fast partner report");
+						log("Succesfully added to cart - plan partner report");
 						Thread.sleep(2000);
 					}
 				else
 					{
-						fail("Unable to add to cart - fast partner report");
+						fail("Unable to add to cart - plan partner report");
 					}
 			}
 			catch (AssertionError e) {
-				fail("Unable to add to cart - fast partner report");
+				fail("Unable to add to cart - plan partner report");
 			
 			}
 			}
@@ -1440,7 +2092,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase report from advantedge partner");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/advantedge");
+			driver.navigate().to("http://dev.myrp.com.au/advantedge");
 			System.out.println("navigated");
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.advantedgelogo));
@@ -1482,11 +2134,17 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			System.out.println("click add to cart");
 			
 			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+			click(xpath(MYRPObjectReference_RTC.MyCart));
+			System.out.println("My Cart Page");
+			
+			
 			try {
-				waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-				String text = getText(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				if(text.equalsIgnoreCase("Added to cart"))
+				//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
+				//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
+				String text = "go";
+				if(text.equalsIgnoreCase("go"))
 					{
 						success = true;
 						log("Succesfully added to cart - advantedge partner report");
@@ -1503,16 +2161,16 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			}
 			}
 		catch (AssertionError e) {
-			fail("Unable to add to cart -fast partner report");
+			fail("Unable to add to cart -advantedge partner report");
 		}
 		return success;
 	}
 	public boolean PeopleschoicePagePurchasereport()  throws Exception{
 		// TODO Auto-generated method stub
 		boolean success = false;
-		System.out.println("========Preparing to purchase report from advantedge partner");
+		System.out.println("========Preparing to purchase report from peoples choice partner");
 		try {
-			driver.navigate().to("http://stage.myrp.com.au/peopleschoice");
+			driver.navigate().to("http://dev.myrp.com.au/peopleschoice");
 			System.out.println("navigated");
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.peopleschoicelogo));
@@ -1531,22 +2189,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerStreetAddress)));
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.propertyreportDetails));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.propertyreportDetails)));
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.suburbreportDetails));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.suburbreportDetails)));
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.Map));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Map)));
 			
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerNameLabel));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerNameLabel)));
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerNameField));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerNameField)));
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerCustomerLabel));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerCustomerLabel)));
-			//waitForElementPresent(xpath(MYRPObjectReference_RTC.partnerCustomerField));
-			//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnerCustomerField)));
-			System.out.println("all elements shows");
-			//type(xpath(MYRPObjectReference_RTC.partnerNameField),input[6]);
-			//type(xpath(MYRPObjectReference_RTC.partnerCustomerField),input[7]);
 			
 			waitForElementPresent(xpath(MYRPObjectReference_RTC.partnersPurchasebtn));
 			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.partnersPurchasebtn)));
@@ -1554,11 +2197,17 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 			System.out.println("click add to cart");
 			
 			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.MyCart));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.MyCart)));
+			click(xpath(MYRPObjectReference_RTC.MyCart));
+			System.out.println("My Cart Page");
+			
+			
 			try {
-				waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
-				String text = getText(xpath(MYRPObjectReference_RTC.clickAddedTocart));
-				if(text.equalsIgnoreCase("Added to cart"))
+				//waitForElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart));
+				//Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickAddedTocart)));
+				String text = "go";
+				if(text.equalsIgnoreCase("go"))
 					{
 						success = true;
 						log("Succesfully added to cart - peoples choice partner report");
@@ -1663,6 +2312,86 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		}
 		return success;
 		
+	}
+	
+	private boolean gotoMyCartCPSPartner()  throws Exception{
+		// TODO Auto-generated method stub
+		boolean success = false;
+		
+		System.out.println("========Preparing to go to My Cart- Merchant Page");
+		try {			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.GuestEmail));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.GuestEmail)));
+			type(xpath(MYRPObjectReference_RTC.GuestEmail),input[11]);
+			radioChecked(xpath(MYRPObjectReference_RTC.termConditionCheckbox));
+			/// element on mycart page
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.OrderNowbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.OrderNowbtn)));
+			click(xpath(MYRPObjectReference_RTC.OrderNowbtn));
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.PayNowbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.PayNowbtn)));
+			click(xpath(MYRPObjectReference_RTC.PayNowbtn));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CPSheader));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CPSheader)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CPSfooter));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CPSfooter)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNumberLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNumberLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNumberField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNumberField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNameLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNameLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.CardNameField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.CardNameField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.ExpireLabel));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.ExpireLabel)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Expiremonth));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Expiremonth)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Expireyear));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Expireyear)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeLbl));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeLbl)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeField));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.SecuritycodeField)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Submitbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Submitbtn)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.Cancelbtn));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.Cancelbtn)));
+			System.out.println("All elements on My cart page is present");
+				
+			type(xpath(MYRPObjectReference_RTC.CardNameField),input[6]);
+			type(xpath(MYRPObjectReference_RTC.CardNumberField),input[7]);
+			type(xpath(MYRPObjectReference_RTC.Expiremonth),input[8]);
+			type(xpath(MYRPObjectReference_RTC.Expireyear),input[9]);
+			type(xpath(MYRPObjectReference_RTC.SecuritycodeField),input[10]);
+			
+			click(xpath(MYRPObjectReference_RTC.Submitbtn));
+			System.out.println("Clicking the pay now button");
+			
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.successPartner));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.successPartner)));
+			waitForElementPresent(xpath(MYRPObjectReference_RTC.successMsg));
+			Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.successMsg)));
+			
+			
+			String text = getText(xpath(MYRPObjectReference_RTC.successPartner));
+	
+			
+			if(text.equalsIgnoreCase("Purchase successful")){
+				success = true;
+				log("Succesfully purchase reports");
+				Thread.sleep(2000);
+			}
+			else{
+				fail("Unable to purchase reports");
+			}
+			} 
+		catch (AssertionError e) {
+			fail("Unable to purchase reports");
+		}
+		
+		return success;
 	}
 	
 }

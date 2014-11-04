@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import myrp.library.ReadXlsData;
 import myrp.library.TestInitReference;
-import myrp.test.RegressionUtil.MYRPRegressionUtil;
 import myrp.test.RegressionUtil.MYRPRegressionUtil_RT07926;
 
 import org.testng.Assert;
@@ -37,9 +36,9 @@ public class RT_07926 extends TestInitReference {
 			MYRPRegressionUtil_RT07926 myrp = new MYRPRegressionUtil_RT07926(input);
 			
 			if(myrp.FSPR()){
-				ATUReports.add(input[1],"FSPR",input[2], input[3], true);//pass
+				ATUReports.add(input[1],"FSPR - Free Suburb Profile Report",input[2], input[3], true);//pass
 			}else{
-				ATUReports.add(input[1],"FSPR",input[2], input[4], true);//fail
+				ATUReports.add(input[1],"FSPR - Free Suburb Profile Report",input[2], input[4], true);//fail
 			}
 			
 		}catch (Exception e) {

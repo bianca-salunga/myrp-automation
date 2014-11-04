@@ -21,24 +21,24 @@ import atu.testng.reports.utils.Utils;
 
 @Listeners({ ATUReportsListener.class, ConfigurationListener.class,
 MethodListener.class })
-public class RT_07837 extends TestInitReference {
+public class RT_07843 extends TestInitReference {
 	{
 		System.setProperty("atu.reporter.config", "../myrp-automation/conf/atu.properties");
 	}
 	
-	String testCase = "RT_07837";
+	String testCase = "RT_07843";
 		
-	@Test(description="RT_07837", dataProvider = "Data-Provider-Function")
+	@Test(description="RT_07843", dataProvider = "Data-Provider-Function")
 	public void RT_07927_to_RT_07930(Class clzz, String[] input) {
 		String testcase = "Testing Testcase - " + input[0] + " : " + input[2];
 		int x = 1;
 		try {
 			MYRPRegressionUtil_RT07926 myrp = new MYRPRegressionUtil_RT07926(input);
 			
-			if(myrp.planPartner()){
-				ATUReports.add(input[1],"PLAN PARTNER",input[2], input[3], true);//pass
+			if(myrp.bsaPartner()){
+				ATUReports.add(input[1],"BankSA free report",input[2], input[3], true);//pass
 			}else{
-				ATUReports.add(input[1],"PLAN PARTNER",input[2], input[4], true);//fail
+				ATUReports.add(input[1],"BankSA free report",input[2], input[4], true);//fail
 			}
 			
 		}catch (Exception e) {
@@ -53,7 +53,7 @@ public class RT_07837 extends TestInitReference {
 	@DataProvider(name = "Data-Provider-Function")
 	public Object[][] parameterIntTestProvider() throws IOException{
 		Object[][] data = null;
-		ReadXlsData rxd = new ReadXlsData("../myrp-automation/test-data/RT_07837.xls");
+		ReadXlsData rxd = new ReadXlsData("../myrp-automation/test-data/RT_07843.xls");
 		data = rxd.getData();
 		return data;
 	}

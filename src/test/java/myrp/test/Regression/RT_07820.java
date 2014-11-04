@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import myrp.library.ReadXlsData;
 import myrp.library.TestInitReference;
-import myrp.test.RegressionUtil.MYRPRegressionUtil;
 import myrp.test.RegressionUtil.MYRPRegressionUtil_RT07926;
 
 import org.testng.Assert;

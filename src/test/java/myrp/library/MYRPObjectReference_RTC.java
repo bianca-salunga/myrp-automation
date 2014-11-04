@@ -224,4 +224,82 @@ public class MYRPObjectReference_RTC {
 	public static String PaynowBtn = "(//*[@id='checkOutButton'])";
 	public static String successPage = "(//span[contains(.,'Purchase successful')])";
 	
+	
+	//CPS//
+
+	public static String OrderNowbtn = "(//*[@id='btnContinue'])";
+	public static String PayNowbtn = "(//*[@id='getApproval'])";
+	
+	public static String CPSheader = "(//*[@id='PxPayHeader_1'])";
+	public static String CPSfooter = "(//*[@id='DpsFooterLogoDps'])";
+	public static String CardNumberLbl = "(//label[contains(.,'Card Number:*')])";
+	public static String CardNumberField = "(//*[@id='CardNumber'])";
+	public static String CardNameLbl = "(//label[contains(.,'CardHolder Name:*')])";
+	public static String CardNameField = "(//*[@id='CardHolderName'])";
+	public static String ExpireLabel = "(//label[contains(.,'Expiry Date (MM/YY):')])";
+	public static String Expiremonth = "(//*[@id='DateExpiry_1'] )";
+	public static String Expireyear = "(//*[@id='DateExpiry_2'])";
+	public static String SecuritycodeLbl = "(//label[contains(.,'Card Security Code:')])";
+	public static String SecuritycodeField = "(//*[@id='Cvc2'])";
+	public static String Submitbtn = "(//*[@id='clickedAdd'])";
+	public static String Cancelbtn = "(//*[@id='clickedCancel'])";
+	
+	public static String CardDropdown = "(//*[@id='card_payment_tokens'])";
+	public static String CardCheckbox = "(//*[@id='rememberCardLabel'])";
+	public static String successPartner = "(//span[contains(.,'Purchase successful')])";
+	public static String successMsg = "(//span[contains(.,'Your order has been successfully completed')])";
+	
+	
+	//other partners
+	public static String bomlogo = "(//img[@src='/cropImage/myrp.images.bank_melbourne_i_logo.png'])";
+	public static String bsalogo = "(//img[@src='/cropImage/myrp.images.bank_sa_i_logo.png'])";
+	public static String stgeorgelogo = "(//img[@src='/cropImage/myrp.images.st_george_i_logo.png'])";
+	
+	public static String westpaclogo = "(//img[@src='/cropImage/myrp.images.westpac_i_westpacWLogo.png'])";
+	public static String westpacHouseImg = "(//img[@src='/cropImage/myrp.images.westpac_image_header.png'])";
+	public static String westpacEnjoyfree = "(//img[@src='/cropImage/myrp.images.westpac_i_headerMessage.png'])";
+	public static String westpacFindHome = "(//img[@src='/cropImage/myrp.images.westpac_i_homeMessage.png'])";
+	public static String westpacImgFooter = "(//img[@src='/cropImage/myrp.images.bank_westpac_i_footerImage.png'])";
+	public static String westpacFNameLbl = "(//label[contains(.,'* First Name')])";
+	public static String westpacFNameField = "(//*[@id='firstName'])";
+	public static String westpacLNameLbl = "(//label[contains(.,'* Last Name')])";
+	public static String westpacLNameField = "(//*[@id='lastName'])";
+	public static String westpacPNumberLbl = "(//label[contains(.,'* Phone Number')])";
+	public static String westpacPNumberField = "(//*[@id='contactNumber'])";
+	public static String westpacEmailLbl = "(//label[contains(.,'* Email')])";
+	public static String westpacEmailField = "(//*[@id='emailAdd'])";
+	public static String westpacCIDNumberLbl = "(//label[contains(.,'* Customer ID')])";
+	public static String westpacCIDNumberField = "(//*[@id='customerNo'])";
+	public static String westpacPostcodeLbl = "(//label[contains(.,'* Postcode')])";
+	public static String westpacPostcodeField = "(//*[@id='postcode'])";
+	public static String westpacAgreeField = "(//*[@id='iAgree'])";
+	
+	
+	public static String bottom = "(//*[@class='campaignPages_25offer_content_white_bgBorder'])";	
+	public static String promoLabel = "(//*[@id='promotionDetails'])";
+	public static String promoField = "(//*[@id='promotionCode'])";
+	public static String promoBtn = "(//*[@name='applyPromoCodeButton'])";
+	
+	public static String getThisfreebtn = "(//*[@id='purchaseButton'])";
+	public static String EmailReportBtn = "(//*[@id='checkOutButton'])";
+	
+	public static String popWindow = "(//*[@id='purchaseButtonForm'])";
+	public static String popUpTitle = "(//*[@id='popUpModal-headerText'])";
+	public static String CustomerNumberLabel = "(//label[contains(.,'* Customer Number:')])";
+	public static String CustomerNumberField = "(//*[@id='contactNumber'])";
+	public static String FirstNameLbl = "(//label[contains(.,'* Lender First Name:')])";
+	public static String FirstNameField = "(//*[@id='firstName'])";
+	public static String EmailAddLbl = "(//label[contains(.,'* Email Address:')])";
+	public static String EmailAddField = "(//*[@id='emailAdd'])";
+	public static String LastNameLbl = "(//label[contains(.,'* Lender Last Name:')])";
+	public static String LastNameField = "(//*[@id='lastName'])";
+	public static String SubmitBtn = "(//*[@id='freePackageSubmit'])";
+	
+	public static String popSuccess = "(//*[@id='cboxLoadedContent'] )";
+	public static String popupSyccessTitle = "(//*[@id='success-header-text'])";
+	public static String popMsgSuccess = "(//label[contains(.,'Thanks. Your report is on its way.')])";	
+	
+	public static String popupClose = "(//*[@id='cboxClose']/img)";
+	
+	
 }
