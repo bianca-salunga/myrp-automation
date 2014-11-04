@@ -50,7 +50,7 @@ public class TestInitReference extends FunctionReference {
     public static final String AUTOMATE_KEY = "9quC1U5hBNqMfkAByiyp";
     public static final String URL = "http://" + USERNAME + ":" + AUTOMATE_KEY + "@hub.browserstack.com/wd/hub";
     
-    public String url = rxml.data(environment + "_url");
+    public static String url = rxml.data(environment + "_url");
     protected String ipAddress;
 
     @SuppressWarnings("static-access")

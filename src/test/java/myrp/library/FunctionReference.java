@@ -631,6 +631,8 @@ public class FunctionReference extends Results {
 		// Store the current window handle
 		driver.close();
 		driver.switchTo().window(winHandleBefore);
+		//driver.switchTo().window(arg0)
+
 	}
 	
     /*public String getValue(By by, String attribute) {

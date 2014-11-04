@@ -78,5 +78,37 @@ public class MYRPObjectReferenceRT_07810 {
 	// Reports And Services Landing Details
 	public static String landingDetailsText = "//*[@id='LandingReport']/div/ul/li[2]/div/p";
 	public static String landingDetailsPrice = "//*[@id='LandingReport']/div/ul/li[3]/div/div";
+	
+	public static String getThisReportButton = "//*[@id='LandingReport']/div/ul/li[3]/div/a";
+	public static String landingSearchForm = "//*[@id='landingSearchForm']";
+	public static String searchHidePanelLink = "//*[@id='landingSearchForm']/div[3]/a";
+	public static String whatYouGetLabel = "//span[contains(.,'What you get:')]";
+	public static String checkContentModal = "//*[@id='cboxLoadedContent']/div/h2";
+	public static String closeButtonModal = "//*[@id='cboxClose']/img";
+	
+	//Reports And Services Elements
+	public static String sampleEstimatedValueReportImage = "//img[@alt='Preview sample estimated value report estimated value of property']";
+	public static String sample6RecentSalesImage = "//img[@alt='Preview sample estimated value report 6 recent sales']";
+	public static String sampleSuburbStatsImage = "//img[@alt='Preview sample estimated value report suburb statistics']";
+	public static String EVRdownloadFullSamplePdf = "//a[contains(.,' Download full sample report (PDF, 3.0MB)')]";
+	
+	public static String sampleDetailedPropertyReportImage = "//img[@alt='Preview sample detailed property report estimated value of a property']";
+	public static String samplePrevSalesPropertyImage = "//img[@alt='Preview sample detailed property report previous sales for this property']";
+	public static String sampleRecentSuburbSalesImage = "//img[@alt='Preview sample detailed property report recent suburb sales']";
+	public static String DPRdownloadFullSamplePdf = "//a[contains(.,' Download full sample report  (PDF, 1.0MB)')]";
+	
+	public static String sampleSalesHistoryReportImage = "//img[@src='/myrp/images/ui/reportsAndServices/thumbnail-37.png']";
+	public static String SHRdownloadFullSamplePdf = "//a[contains(.,' Download full sample report  (PDF, 1.0MB)')]";
+	
+	public static String getTitleDocumentButton = "//a[contains(.,'Get Title Document')]";
+	public static String getTitleDocumentForm = "//*[@id='LandingReport']/div[2]";
+	public static String LandingHidePanelLink = "//*[@id='LandingReport']/div[2]/div[1]/a";
+	public static String TitleDocumentNswButton = "//*[@id='LandingReport']/div[2]/div[2]/div[1]/a";
+	public static String TitleDocumentVicButton = "//*[@id='LandingReport']/div[2]/div[2]/div[2]/a";
+	public static String TitleDocumentQldButton = "//*[@id='LandingReport']/div[2]/div[2]/div[3]/a";
+	public static String TitleDocuNswNextBrowser = "//img[@src='/images/title_searches_nsw.jpg']";
+	public static String TitleDocuVicNextBrowser = "//img[@src='/images/tsv_vic.jpg']";
+	public static String TitleDocuQldNextBrowser = "//img[@src='/images/tsq_qld.jpg']";	
+	
 
 }
