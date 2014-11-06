@@ -37,7 +37,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.searchbySLAS)));
 				waitForElementPresent(xpath(MYRPObjectReference_RTC.clickSearchAddress));
 				Assert.assertTrue(isElementPresent(xpath(MYRPObjectReference_RTC.clickSearchAddress)));
-				
+				Thread.sleep(10000);
 				//typing of address
 				type(xpath(MYRPObjectReference_RTC.searchbySLAS),input[5]);
 				System.out.println("Adress entered");
@@ -689,7 +689,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		//System.out.println("========Preparing to purchase subscription report as registered user");
 		try {
-			if(purchaseEstimatedValueSubcription() && purchasedSuburbSalesMapSubscription() && purchasedSuburbValueMapSubscription() && gotoSiginCart() && gotoMyCartCPSRegisterUser()){
+			if(purchaseEstimatedValueSubcription() && purchasedSuburbSalesMapSubscription() && purchasedSuburbValueMapSubscription() && gotoSiginCart() && gotoMyCartMerchantRegisterUser()){
 				success = true;
 				log("Successfully purchased Subscription report as registered user");
 				Thread.sleep(2000);
@@ -1204,7 +1204,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on nab partner");
 		try {
-			if(NabPagePurchasereport() && gotoMyCartCPSPartner()){
+			if(NabPagePurchasereport() && gotoMyCartMerchantPartner()){
 				success = true;
 				log("Successfully purchased property report on nab partner");
 				Thread.sleep(2000);
@@ -1223,7 +1223,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on choice partner");
 		try {
-			if(ChoicePagePurchasereport() && gotoMyCartCPSPartner()){
+			if(ChoicePagePurchasereport() && gotoMyCartMerchantPartner()){
 				success = true;
 				log("Successfully purchased property report on choice partner");
 				Thread.sleep(2000);
@@ -1241,7 +1241,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on fast partner");
 		try {
-			if(FastPagePurchasereport() && gotoMyCartCPSPartner()){
+			if(FastPagePurchasereport() && gotoMyCartMerchantPartner()){
 				success = true;
 				log("Successfully purchased property report on fast partner");
 				Thread.sleep(2000);
@@ -1259,7 +1259,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on plan partner");
 		try {
-			if(PlanPagePurchasereport() && gotoMyCartCPSPartner()){
+			if(PlanPagePurchasereport() && gotoMyCartMerchantPartner()){
 				success = true;
 				log("Successfully purchased property report on plan partner");
 				Thread.sleep(2000);
@@ -1277,7 +1277,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on advantedge partner");
 		try {
-			if(AdvantedgePagePurchasereport() && gotoMyCartCPSPartner()){
+			if(AdvantedgePagePurchasereport() && gotoMyCartMerchantPartner()){
 				success = true;
 				log("Successfully purchased property report on advantedge partner");
 				Thread.sleep(2000);
@@ -1295,7 +1295,7 @@ public class MYRPRegressionUtil_RT07926 extends FunctionReference {
 		boolean success = false;
 		System.out.println("========Preparing to purchase property report on peoples choice partner");
 		try {
-			if(PeopleschoicePagePurchasereport() && gotoMyCartCPSPartner()){
+			if(PeopleschoicePagePurchasereport() && gotoMyCartMerchantPartner()){
 				success = true;
 				log("Successfully purchased property report on peoples choice partner");
 				Thread.sleep(2000);
