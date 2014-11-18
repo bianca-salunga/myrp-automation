@@ -40,6 +40,11 @@ public class RT_07810 extends TestInitReference {
 				ATUReports.add(input[1],"LANDING PAGE",input[2], input[4], true);//fail
 			}
 			
+			//ATUReports.add(input[4], LogAs.FAILED, new CaptureScreen(ScreenshotOf.DESKTOP));
+			
+			//ATUReports.add(input[5], LogAs.PASSED, new CaptureScreen(ScreenshotOf.DESKTOP));
+			
+			
 		}catch (Exception e) {
 			fail(testcase);
 			e.printStackTrace();
